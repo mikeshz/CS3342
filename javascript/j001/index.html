@@ -5,8 +5,18 @@
         <h1>Today's date is:</h1>
     </div>
 
-    <div id="move-date">
+    <div id="original-date">
+    </div>
+
+    <div id="move-button">
         <button type="button" onclick="moveDate()">Move Date</button>
+    </div>
+
+    <div id="move-date">
+    </div>
+
+    <div id="time-passed">
+        <h2>asdf</h2>
     </div>
 
     <script>
@@ -26,10 +36,44 @@ if(mm<10) {
 today = '<h1>' + mm + '/' + dd +'/'+ yyyy + '</h1>';
 div = document.getElementById( 'title' );
 
-div.insertAdjacentHTML( 'beforeend', today );
+document.getElementById( 'original-date' ).insertAdjacentHTML( 'beforeend', today );
+moved = false;
 
 function moveDate() {
-    document.getElementById( 'move-date' ).insertAdjacentHTML( 'beforeend', today );
+    if (moved === false) {
+        document.getElementById( 'move-date' ).insertAdjacentHTML( 'beforeend', today );
+        moved = true;
+    }
+    else {
+        var element = document.getElementById("original-date");
+        element.removeChild(element.lastChild);
+
+        var element = document.getElementById("move-date");
+        element.removeChild(element.lastChild);
+
+        document.getElementById( 'original-date' ).insertAdjacentHTML( 'beforeend', today );
+        moved = false;
+    }
 }
+
+    document.getElementById('time-passed').innerHTML = "klasdjfkl";
+var interval = setInterval(function() {
+    var secondsPassed = 0;
+
+    document.getElementById('time-passed').innerHTML = secondsPassed;
+}, 1000);
+
+function blink() {
+    var div = document.getElementById('time-passed');
+    if (div.style.visibility == 'hidden')
+    {
+        div.style.visibility = 'visible';
+    }
+    else
+    {
+        div.style.visibility = 'hidden';
+    }
+}
+window.setInterval(blink, 500);
     </script>
 </html>
