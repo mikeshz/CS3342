@@ -6,9 +6,19 @@ j100
 ----- Fetching list of already processed practice times
 -------- Already processed practice times 
 ----- Fetching current practice times
+WARNING: minutes reduced to 60 from 60
+WARNING: minutes reduced to 60 from 60
+WARNING: minutes reduced to 60 from 60
 -------- Current practice times 
+0e32099ec59a4e528cd6262a4a642e6f7a37595e j001 60
+b531f9fb98502200697f11486042c1020779c29e j001 60
+7b402fe462089749b1eb51e729e7ace07b417406 j001 60
 ----- Summary Report
+0e32099ec59a4e528cd6262a4a642e6f7a37595e j001 60
+b531f9fb98502200697f11486042c1020779c29e j001 60
+7b402fe462089749b1eb51e729e7ace07b417406 j001 60
 ----- Time Log Report
 ------- By Task
-total time on all tasks according to this log was 0
-the percentage of weekly required practice time spent so far is 0.0% (target is 100.0%)
+total time spent on task j001 was 180
+total time on all tasks according to this log was 180
+the percentage of weekly required practice time spent so far is 100.0% (target is 100.0%)
