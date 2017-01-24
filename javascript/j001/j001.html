@@ -18,13 +18,13 @@
     <div id="time-title">
         <br>
         <br>
-        <h2>Seconds Passed: </h2>
+        <h2>Time Passed: </h2>
     </div>
     <div id="time-passed">
-        <h2>0</h2>
+        <h2>00:00</h2>
     </div>
     <div id="timer-controls">
-        <button type="button" onclick="moveDate()" id="resetBtn">Reset</button>
+        <button type="button" onclick="resetTime()" id="resetBtn">Reset</button>
         <button type="button" onclick="pauseTime()" id="pauseBtn">Pause</button>
     </div>
 
@@ -69,21 +69,38 @@ var secondsPassed = 0;
 paused = false;
 function timer() {
     var div = document.getElementById('time-passed');
-    if (!paused) {
-        secondsPassed += 10;
+    if (!paused && secondsPassed < 3600) {
+        secondsPassed += 1;
     }
-    document.getElementById('time-passed').innerHTML = '<h2>' + secondsPassed + '</h2>';
+    document.getElementById('time-passed').innerHTML = '<h2>' + ("0" + Math.floor(secondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(secondsPassed%60)).slice(-2);
+
+    if (secondsPassed >= 3000) {
+        document.getElementById('time-passed').style.background = "red";
+    }
+    else if (secondsPassed >= 1800) {
+        document.getElementById('time-passed').style.background = "springgreen";
+    }
+    else {
+        document.getElementById('time-passed').style.background = "transparent";
+    }
 }
-window.setInterval(timer, 10000);
+window.setInterval(timer, 1000);
 
 function pauseTime() {
     if (!paused) {
         paused = true;
-        document.getElementById("pauseBtn").value = "Resume";
+        document.getElementById("pauseBtn").innerHTML = "Resume";
     }
     else {
         paused = false;
+        document.getElementById("pauseBtn").innerHTML = "Pause";
     }
 }
+
+function resetTime() {
+    secondsPassed = 0;
+    document.getElementById('time-passed').innerHTML = '<h2>' + secondsPassed + '</h2>';
+}
+
     </script>
 </html>
