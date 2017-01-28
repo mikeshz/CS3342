@@ -23,12 +23,32 @@
     <div id="time-passed">
         <h2>00:00</h2>
     </div>
+    <div id="time-reached-commit">
+    </div>
     <div id="timer-controls">
-        <button type="button" onclick="resetTime()" id="resetBtn">Reset</button>
-        <button type="button" onclick="pauseTime()" id="pauseBtn">Pause</button>
+        <button type="button" onclick="btnResetTime()" id="resetBtn">Reset</button>
+        <button type="button" onclick="btnPauseTime()" id="pauseBtn">Pause</button>
+    </div>
+
+    <div id="search-time-title">
+        <br>
+        <br>
+        <h2>Time spent searching: </h2>
+    </div>
+    <div id="search-time-passed">
+        <h2>00:00</h2>
+    </div>
+    <div id="search-timer-controls">
+        <button type="button" onclick="btnStartSearchTime()" id="searchBtn">Start Searching</button>
     </div>
 
     <script>
+// Maximum time primary timer will tick to
+var MAXTIME = 3600;
+// Maximum time search timer will tick on
+var MAXSEARCH = 900;
+
+// Prints current date
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -66,16 +86,19 @@ function moveDate() {
 }
 
 var secondsPassed = 0;
-paused = false;
+var searchSecondsPassed = 0;
+isPaused = false;
 function timer() {
+    // Main Timer Code
     var div = document.getElementById('time-passed');
-    if (!paused && secondsPassed < 3600) {
+    if (!isPaused && secondsPassed < MAXTIME) {
         secondsPassed += 1;
     }
-    document.getElementById('time-passed').innerHTML = '<h2>' + ("0" + Math.floor(secondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(secondsPassed%60)).slice(-2);
+    document.getElementById('time-passed').innerHTML = '<h2>' + ("0" + Math.floor(secondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(secondsPassed%60)).slice(-2) + '</h2>';
 
-    if (secondsPassed >= 3000) {
+    if (secondsPassed >= MAXTIME) {
         document.getElementById('time-passed').style.background = "red";
+        document.getElementById('time-reached-commit').innerHTML = '<h2>Maximum practice time reached. Please commit now.</h2>';
     }
     else if (secondsPassed >= 1800) {
         document.getElementById('time-passed').style.background = "springgreen";
@@ -83,24 +106,77 @@ function timer() {
     else {
         document.getElementById('time-passed').style.background = "transparent";
     }
+
+
+    // Secondary Timer Code
+    if (!isSearchPaused) {
+        if (searchSecondsPassed >= MAXSEARCH) {
+            stopSearch();
+            console.log("max search time reached");
+        }
+        else {
+            searchSecondsPassed += 1;
+            document.getElementById('search-time-passed').innerHTML = '<h2>' + ("0" + Math.floor(searchSecondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(searchSecondsPassed%60)).slice(-2) + '</h2>';
+        }
+    }
 }
 window.setInterval(timer, 1000);
 
-function pauseTime() {
-    if (!paused) {
-        paused = true;
-        document.getElementById("pauseBtn").innerHTML = "Resume";
+function btnPauseTime() {
+    if (!isPaused) {
+        pauseTime();
     }
     else {
-        paused = false;
-        document.getElementById("pauseBtn").innerHTML = "Pause";
+        resumeTime();
+        stopSearch();
     }
 }
 
-function resetTime() {
+function btnResetTime() {
+    resumeTime();
     secondsPassed = 0;
-    document.getElementById('time-passed').innerHTML = '<h2>' + secondsPassed + '</h2>';
+    document.getElementById('time-passed').innerHTML = '<h2>' + ("0" + Math.floor(secondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(secondsPassed%60)).slice(-2) + '</h2>';
+
+    isSearchPaused = true;
+    searchSecondsPassed = 0;
+    document.getElementById('search-time-passed').innerHTML = '<h2>' + ("0" + Math.floor(searchSecondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(searchSecondsPassed%60)).slice(-2) + '</h2>';
+
+    document.getElementById('time-reached-commit').innerHTML = "";
 }
 
+isSearchPaused = true;
+function btnStartSearchTime() {
+    if (isSearchPaused) {
+        pauseTime();
+        isSearchPaused = false;
+        document.getElementById("searchBtn").innerHTML = "Done Searching";
+    }
+    else {
+        stopSearch();
+    }
+}
+
+
+function pauseTime() {
+    isPaused = true;
+    document.getElementById("pauseBtn").innerHTML = "Resume";
+}
+function resumeTime() {
+    isPaused = false;
+    document.getElementById("pauseBtn").innerHTML = "Pause";
+}
+
+function stopSearch() {
+    resumeTime();
+    isSearchPaused = true;
+    document.getElementById("searchBtn").innerHTML = "Start Searching";
+    secondsPassed += searchSecondsPassed;
+    if (secondsPassed > MAXTIME) {
+        secondsPassed = MAXTIME;
+    }
+    searchSecondsPassed = 0;
+    document.getElementById('search-time-passed').innerHTML = '<h2>' + ("0" + Math.floor(searchSecondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(searchSecondsPassed%60)).slice(-2) + '</h2>';
+    document.getElementById('time-passed').innerHTML = '<h2>' + ("0" + Math.floor(secondsPassed/60)).slice(-2) + ":" + ("0" + Math.round(secondsPassed%60)).slice(-2) + '</h2>';
+}
     </script>
 </html>
