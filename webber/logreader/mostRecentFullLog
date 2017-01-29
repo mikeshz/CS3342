@@ -1,3 +1,34 @@
+commit 0ca88f1080b94665b2f88fa461d13df769977219
+Merge: d56ae16 17089d2
+Author: Michael Song <songhaozhou@gmail.com>
+Date:   Sun Jan 29 13:58:26 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/msong63
+
+commit d56ae16f903d418e33174eca3ba9cfcc913b9eeb
+Author: Michael Song <songhaozhou@gmail.com>
+Date:   Sun Jan 29 13:57:10 2017 -0500
+
+    time j002 60 in progress
+
+commit 17089d202350af82ffd3865bc809fde034d8abdc
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 28 16:26:57 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit c89f1ef2243b05d8ac3f26178c1c77310c5fe6a3
+Author: Michael Song <songhaozhou@gmail.com>
+Date:   Fri Jan 27 20:01:21 2017 -0500
+
+    time j001 60 finished
+
+commit 0bc929d234cb9c1ff4f412e7445bd932e57480b7
+Author: Michael Song <songhaozhou@gmail.com>
+Date:   Tue Jan 24 15:27:44 2017 -0500
+
+    time j001 60 in progress
+
 commit 911f78a635876d8afc0f2e492dda9802fcd06158
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Thu Jan 26 18:13:04 2017 -0500
