@@ -12,11 +12,16 @@ b531f9fb98502200697f11486042c1020779c29e j001 60
 7b402fe462089749b1eb51e729e7ace07b417406 j001 60
 ----- Fetching current practice times
 -------- Current practice times 
+d56ae16f903d418e33174eca3ba9cfcc913b9eeb j002 60
+c89f1ef2243b05d8ac3f26178c1c77310c5fe6a3 j001 60
+0bc929d234cb9c1ff4f412e7445bd932e57480b7 j001 60
 0e32099ec59a4e528cd6262a4a642e6f7a37595e j001 60
 b531f9fb98502200697f11486042c1020779c29e j001 60
 7b402fe462089749b1eb51e729e7ace07b417406 j001 60
 ----- Summary Report
 ----- Time Log Report
 ------- By Task
-total time on all tasks according to this log was 0
-the percentage of weekly required practice time spent so far is 0.0% (target is 100.0%)
+total time spent on task j002 was 60
+total time spent on task j001 was 120
+total time on all tasks according to this log was 180
+the percentage of weekly required practice time spent so far is 100.0% (target is 100.0%)
