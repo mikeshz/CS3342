@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div id="move-button">
+        <button type="button" onclick="btnShowQuestion()">Show Question</button>
+        <button type="button" onclick="btnShowAnswer()">Show Answer</button>
+    </div>
+
+    <div id="question-header">
+        <h2>Question</h2>
+    </div>
+    <div id="question-div">
+    </div>
+
+    <div id="answer-header">
+        <h2>Answer</h2>
+    </div>
+    <div id="answer-div">
+    </div>
+
+    <script src="./examdatabase.js"></script>
+    <script>
+var questionNum = -1;
+function btnShowQuestion() {
+    questionNum = Math.floor(Math.random() * (examdatabase.questions.length + 1));
+    // If we get a null JSON object, get a new one until it's not null
+    while (examdatabase.questions[questionNum] == null) {
+        questionNum = Math.floor(Math.random() * (examdatabase.questions.length + 1));
+    }
+    document.getElementById('question-div').innerHTML = examdatabase.questions[questionNum].question;
+    document.getElementById('answer-div').innerHTML = "";
+}
+
+function btnShowAnswer() {
+    var answerString = "";
+    // Handles case of multiple answers
+    if (typeof(examdatabase.questions[questionNum].answer) === "object") {
+        // Adds answers to our answer string with new line characters
+        for (var i = 0; i < examdatabase.questions[questionNum].answer.length; i++) {
+            answerString = answerString + 'Answer ' + (i + 1) + ': ' + examdatabase.questions[questionNum].answer[i] + '<br>';
+        }
+    }
+    else {
+        answerString = examdatabase.questions[questionNum].answer;
+    }
+    document.getElementById('answer-div').innerHTML = answerString;
+}
+    </script>
+</html>
