@@ -8,9 +8,6 @@ j200
 r001
 ----- Fetching list of already processed practice times
 -------- Already processed practice times 
-0e32099ec59a4e528cd6262a4a642e6f7a37595e j001 60
-b531f9fb98502200697f11486042c1020779c29e j001 60
-7b402fe462089749b1eb51e729e7ace07b417406 j001 60
 ----- Fetching current practice times
 -------- Current practice times 
 e44b4c387b03915f567c35e30fb2230a64a50fca r001 60
@@ -27,7 +24,7 @@ b531f9fb98502200697f11486042c1020779c29e j001 60
 ------- By Task
 total time spent on task r001 was 180.0
 total time spent on task j002 was 60.0
-total time spent on task j001 was 120.0
-total time on all tasks according to this log was 360.0
+total time spent on task j001 was 300.0
+total time on all tasks according to this log was 540.0
 Note: time reported in excess of 180 minutes does not count toward practice
 the percentage of weekly required practice time spent so far is 100.0% (target is 100.0%)
